@@ -1,10 +1,14 @@
 import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import RegisterScreen from './pages/CreateEventScreen';
 function App() {
 
   return (
-    <>
-      <h1>hello to everyone</h1>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<RegisterScreen />} />
+      </Routes>
+    </Router>
   )
 }
 export default App
