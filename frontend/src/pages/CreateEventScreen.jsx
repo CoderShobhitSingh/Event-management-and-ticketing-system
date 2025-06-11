@@ -12,17 +12,24 @@ const CreateEventScreen = () => {
   const [error, setError] = useState('');
 
   const submitHandler = (e) => {
-    e.preventDefault();
-    console.log({
-      title,
-      description,
-      date,
-      location,
-      price,
-      capacity,
-      image,
-    });
-    setError('');
+  e.preventDefault();
+
+  const newEvent = {
+    title,
+    description,
+    date,
+    location,
+    price,
+    capacity,
+    image,
+  };
+
+  const existingEvents = JSON.parse(localStorage.getItem('events')) || [];
+  existingEvents.push(newEvent);
+  localStorage.setItem('events', JSON.stringify(existingEvents));
+
+  setError('');
+  window.location.href = '/'; 
   };
 
   return (
