@@ -1,4 +1,5 @@
 import React from 'react'
+import '../App.css';
 
 const Navbar = () => {
   return (
@@ -6,8 +7,10 @@ const Navbar = () => {
       <div className="navbar-container">
         <a href="/" className="navbar-logo">Event-To</a>
         <ul className="navbar-menu">
-          <li><a href="#">Create Event</a></li>
+          <li><a href="#">CREATE EVENT</a></li>
           <li><a href="#">BOOK TICKET</a></li>
+          <li><a href="#">LOGIN</a></li>
+          <li><a href="#">LOGOUT</a></li>
         </ul>
       </div>
     </nav>
