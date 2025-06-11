@@ -7,10 +7,10 @@ const Navbar = () => {
       <div className="navbar-container">
         <a href="/" className="navbar-logo">Event-To</a>
         <ul className="navbar-menu">
-          <li><a href="#">CREATE EVENT</a></li>
-          <li><a href="#">BOOK TICKET</a></li>
+          <li><a href="/">CREATE EVENT</a></li>
+          <li><a href="/home">BOOK TICKET</a></li>
           <li><a href="#">LOGIN</a></li>
-          <li><a href="#">LOGOUT</a></li>
+          <li><a href="#">SIGNUP</a></li>
         </ul>
       </div>
     </nav>
