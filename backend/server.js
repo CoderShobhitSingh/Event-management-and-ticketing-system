@@ -1,13 +1,39 @@
 const express = require("express");
-const app = express();
-const PORT = 5000;
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const path = require("path");
+require("dotenv").config();
 
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => console.log("MongoDB connected"))
+  .catch(err => console.log("MongoDB connection error:", err));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Server is running!");
+const User = require('./models/User');
+
+app.post("/register", async (req, res) => {
+  const { name, email, phone, password } = req.body;
+
+  if (!name || !email || !phone || !password) {
+    return res.status(400).send("All fields are required.");
+  }
+
+  try {
+    const newUser = new User({ name, email, phone, password });
+    await newUser.save();
+    res.status(201).send("Registration successful!");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error saving user.");
+  }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
