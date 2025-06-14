@@ -32,7 +32,7 @@ app.post("/register", async (req, res) => {
     res.status(201).send("Registration successful!");
   } catch (err) {
     console.error(err);
-    res.status(500).send("Error saving user.");
+    res.status(500).send("Error occurred while saving user details.");
   }
 });
 
