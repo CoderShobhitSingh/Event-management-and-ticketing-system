@@ -10,14 +10,12 @@ function App() {
     <Router>
       <Navbar />
       <main>
-        <container>
           <Routes>
             <Route path="/" element={<RegisterScreen />} />
             <Route path="/home" element={<HomeScreen />} />
             <Route path="/signup" element={<UserSignup />} />
             <Route path="/login" element={<UserLogin />} />
           </Routes>
-        </container>
       </main>
     </Router>
   );
